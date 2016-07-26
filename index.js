@@ -1,3 +1,4 @@
+/*
 const readline = require( 'readline' )
 
 const readInterface = readline.createInterface({
@@ -10,3 +11,10 @@ readInterface.question( "Is this working? ", answer => {
 
   readInterface.close()
 })
+*/
+
+const Deck = require( './src/deck' ).Deck
+
+const deck = new Deck()
+
+console.log( deck.toString() )
