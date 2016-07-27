@@ -11,12 +11,20 @@ deck.shuffle()
 
 // Player places bet
 const player = new Player()
+const dealer = new Player()
 
 // Dealer gives out:
 // - one card face down to player
+player.getCard( deck.playCard() )
 // - one card face down to Dealer
+dealer.getCard( deck.playCard() )
 // - one card face up to player
+player.getCard( deck.playCard() )
 // - one card face up to Dealer
+dealer.getCard( deck.playCard() )
+
+// console.log( "Player", player.showHand() )
+// console.log( "Dealer", dealer.showHand() )
 
 // Repeat until player chooses to stay:
 // Player chooses to hit or stay

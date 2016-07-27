@@ -3,20 +3,29 @@ const { Card, SUITS, NUMBERS } = cards
 
 class Deck {
   constructor() {
-    this.cards = this.createDeck()
+    this.cards = [] //this.createDeck() // .concat( this.createDeck() )
+    this.createDeck()
   }
 
   createDeck() {
-    return SUITS.reduce( this.deckReducer, [] )
+    for( let s = 0; s < SUITS.length; s++ ) {
+      for( let n = 0; n < NUMBERS.length; n++ ) {
+        this.cards.push( new Card({ number: NUMBERS[ n ], suit: SUITS[ s ] }) )
+      }
+    }
   }
 
-  deckReducer( previous, current, index, array ) {
-    previous.concat( NUMBERS.reduce( ( previousCard, currentCard ) => {
-      previous.push( new Card({ number: currentCard, suit: current }))
-    }, [] ))
-
-    return previous
-  }
+  // createDeck() {
+  //   return SUITS.reduce( this.deckReducer, [] )
+  // }
+  //
+  // deckReducer( previous, current, index, array ) {
+  //   previous.concat( NUMBERS.reduce( ( previousCard, currentCard ) => {
+  //     previous.push( new Card({ number: currentCard, suit: current }))
+  //   }, [] ))
+  //
+  //   return previous
+  // }
 
   shuffle() {
     var cardCount = this.cards.length
@@ -32,6 +41,10 @@ class Deck {
 
   toString() {
     return this.cards.map( card => card.toString() ).concat()
+  }
+
+  playCard() {
+    return this.cards.pop()
   }
 }
 
