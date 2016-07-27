@@ -9,6 +9,12 @@ const KING = 'K'
 
 const SUITS = [ HEARTS, DIAMONDS, CLUBS, SPADES ]
 const NUMBERS = [ ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING ]
+const VALUES = {
+  [ACE]: 11,
+  [JACK]: 10,
+  [QUEEN]: 10,
+  [KING]: 10
+}
 
 class Card {
   constructor( options ) {
@@ -18,6 +24,10 @@ class Card {
 
   toString() {
     return `${this.number} ${this.suit} `
+  }
+
+  value() {
+    return VALUES[ this.number ] || this.number
   }
 }
 

@@ -7,7 +7,7 @@ class Player {
   }
 
   getCard( card ) {
-    this.cards.push(card)
+    this.cards.push( card )
   }
 
   newHand() {
@@ -16,6 +16,10 @@ class Player {
 
   showHand() {
     return this.cards.map( card => card.toString() ).join( ' ' )
+  }
+
+  handValue() {
+    return this.cards.reduce( (total, card ) => total + card.value(), 0 )
   }
 }
 
