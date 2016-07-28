@@ -2,6 +2,7 @@
 const rl = require( 'readline-sync' )
 const Deck = require( './src/deck' ).Deck
 const Player = require( './src/player' ).Player
+const cards = require( './src/card' )
 
 // Deck is created
 const deck = new Deck()
@@ -33,7 +34,7 @@ let playerTotal = player.handValue()
 console.log( 'Player Hand: ', player.showHand() )
 
 if( playerTotal === 21 ) {
-  console.log( 'PLAYER WINS!' )
+  console.log( 'PLAYER GETS BLACKJACK!' )
   answer = 'S'
 }
 
@@ -53,7 +54,7 @@ while( answer !== 'S'  ) {
   }
 
   if( playerTotal > 21 ) {
-    console.log( 'PLAYER SUCKS!' )
+  //  console.log( 'PLAYER BUSTS DEALER WINS' )
     answer = 'S'
   }
 }
@@ -66,20 +67,29 @@ if( dealerTotal === 21 ) {
   console.log( 'YOU THE BESTEREST DEALER' )
 }
 
-while( dealerTotal <= 16 ) {
+while( dealerTotal <= 16 && playerTotal < 21 ) {
   dealer.getCard( deck.playCard() )
 
   dealerTotal = dealer.handValue()
   console.log( 'Dealer Hand: ', dealer.showHand() )
-
-  if( dealerTotal > 21 ) {
-    console.log( 'PLAYER WINS!' );
-  } else if ( dealerTotal > 16 && dealerTotal > player.handValue() ) {
-    console.log( 'PLAYER LOSES!')
-  } else if (playerTotal > 21 && dealerTotal < 21) {
-    console.log( 'DEALER WINS!' );
-  }
 }
+
+//if statements for player and dealer that do not change values
+if ( playerTotal > 21 ) {
+  console.log( '\nPLAYER BUSTS\nDEALER WINS' )
+} else if ( dealerTotal > 21) {
+  console.log( '\nPLAYER WINS!\nDEALER WENT OVER 21' );
+} else if ( dealerTotal > 16 && dealerTotal > player.handValue() ) {
+  console.log( '\nPLAYER LOSES!')
+} else if ( (playerTotal > 21 && dealerTotal < 21)) {
+  console.log( '\nDEALER WINS!' )
+}
+//For loop for running through cards to find aces in hand
+// for (i = 0; i < this.cards.length; i++) {
+//    if (this.cards[i].VALUES == "ACE" && playerTotal <= 11)
+//      playerTotal += 10;
+//    }
+//Player wins statements
 
 // Dealer plays, hitting while 16 or under (17 or more, dealer stays)
 // - If hits and bust, player wins
