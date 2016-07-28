@@ -28,10 +28,11 @@ dealer.getCard( deck.playCard() )
 // Player chooses to hit or stay
 // - If hits and bust (go over 21), automatically loses
 let answer = 'H'
+let playerTotal = player.handValue()
 
 console.log( 'Player Hand: ', player.showHand() )
 
-if ( player.handValue() === 21 ) {
+if( playerTotal === 21 ) {
   console.log( 'YOU WIN!' )
   answer = 'S'
 }
@@ -45,14 +46,34 @@ while( answer !== 'S'  ) {
       console.log( 'Player Hand: ', player.showHand() )
       break
     case 'S':
-      break;
+      break
     default:
       console.log( answer + ' is not a valid response!' )
   }
-
-  if( player.handValue() > 21 ) {
+  if( playerTotal > 21 ) {
     console.log( 'YOU SUCK!' )
     answer = 'S'
+  }
+}
+
+let dealerTotal = dealer.handValue()
+
+console.log( 'Dealer Hand: ', dealer.showHand() )
+
+if( dealerTotal === 21 ) {
+  console.log( 'YOU THE BESTEREST DEALER' )
+}
+
+while( dealerTotal <= 16 ) {
+  dealer.getCard( deck.playCard() )
+
+  dealerTotal = dealer.handValue()
+  console.log( 'Dealer Hand: ', dealer.showHand() )
+
+  if( dealerTotal > 21 ) {
+    console.log( "YOU WIN!" );
+  } else if ( dealerTotal > 16 && dealerTotal > player.handValue() ) {
+    console.log( "YOU LOSE!")
   }
 }
 
