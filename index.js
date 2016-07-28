@@ -33,7 +33,7 @@ let playerTotal = player.handValue()
 console.log( 'Player Hand: ', player.showHand() )
 
 if( playerTotal === 21 ) {
-  console.log( 'YOU WIN!' )
+  console.log( 'PLAYER WINS!' )
   answer = 'S'
 }
 
@@ -43,6 +43,7 @@ while( answer !== 'S'  ) {
   switch( answer ) {
     case 'H':
       player.getCard( deck.playCard() )
+      playerTotal = player.handValue()
       console.log( 'Player Hand: ', player.showHand() )
       break
     case 'S':
@@ -50,8 +51,9 @@ while( answer !== 'S'  ) {
     default:
       console.log( answer + ' is not a valid response!' )
   }
+
   if( playerTotal > 21 ) {
-    console.log( 'YOU SUCK!' )
+    console.log( 'PLAYER SUCKS!' )
     answer = 'S'
   }
 }
@@ -71,9 +73,11 @@ while( dealerTotal <= 16 ) {
   console.log( 'Dealer Hand: ', dealer.showHand() )
 
   if( dealerTotal > 21 ) {
-    console.log( "YOU WIN!" );
+    console.log( 'PLAYER WINS!' );
   } else if ( dealerTotal > 16 && dealerTotal > player.handValue() ) {
-    console.log( "YOU LOSE!")
+    console.log( 'PLAYER LOSES!')
+  } else if (playerTotal > 21 && dealerTotal < 21) {
+    console.log( 'DEALER WINS!' );
   }
 }
 
