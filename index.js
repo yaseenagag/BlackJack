@@ -62,7 +62,8 @@ while( answer !== 'S'  ) {
 
 //DEALER CODE
 let dealerTotal = dealer.handValue()
-
+// Dealer plays, hitting while 16 or under (17 or more, dealer stays)
+// - If hits and bust, player wins
 while( dealerTotal <= 16 && playerTotal < 21 ) {
   dealer.giveCard( deck.playCard() )
 
@@ -90,8 +91,3 @@ if ( playerTotal > 21 ) {
 } else if ( dealerTotal > playerTotal ) {
   console.log( '\nLIFE IS ABOUT TAKING RISKS! YOU SHOULD HAVE HIT AGAIN!\nDEALER WINS\n')
 }
-// else if ( playerTotal > playerTotal ) {
-//   console.log( '\nLIFE IS ABOUT TAKING RISKS! YOU SHOULD HAVE HIT AGAIN!\nDEALER WINS\n')
-// }
-// Dealer plays, hitting while 16 or under (17 or more, dealer stays)
-// - If hits and bust, player wins
