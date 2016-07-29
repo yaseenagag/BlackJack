@@ -45,14 +45,14 @@ while( answer !== 'S'  ) {
 
   switch( answer ) {
     case 'H':
-    player.giveCard( deck.playCard() )
-    playerTotal = player.handValue()
-    console.log( 'Player Hand: ', player.showHand() )
+      player.giveCard( deck.playCard() )
+      playerTotal = player.handValue()
+      console.log( 'Player Hand: ', player.showHand() )
     break
     case 'S':
-    break
+      break
     default:
-    console.log( answer + ' is not a valid response!' )
+      console.log( answer + ' is not a valid response!' )
   }
 
   if( playerTotal > 21 ) {
@@ -71,11 +71,6 @@ while( dealerTotal <= 16 && playerTotal < 21 ) {
   console.log( 'Dealer Hand: ', dealer.showHand() )
 }
 
-if ( dealerTotal === 21 ) { //&& playerTotal !== 21
-  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
-}
-
-
 //Show Scores and Hands for Player and Dealer
 console.log( '\nPLayer: ', player.showHand() )
 console.log( 'Score: ', playerTotal )
@@ -83,6 +78,9 @@ console.log( '\nDealer: ', dealer.showHand() )
 console.log( 'Score: ', dealerTotal )
 
 //if statements for player and dealer that do not change values
+if ( dealerTotal === 21 ) { //&& playerTotal !== 21
+  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
+}
 if ( playerTotal > 21 ) {
   console.log( '\nPLAYER WENT OVER 21\nDEALER WINS\nPLAYER NEEDS PRACTICE' )
 } else if ( dealerTotal > 21) {
