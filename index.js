@@ -15,6 +15,18 @@ deck.shuffle()
 const player = new Player()
 const dealer = new Player()
 
+//Game Intro
+console.log( "Welcome to Yaseen, Jrob & Harman's BlackJack" )
+console.log( "\nYour goal is to get a score of 21" )
+console.log( "\nIf you go over 21, you automatically lose" )
+//Card Values Explanation
+console.log( "\nCard Values:" )
+console.log( "\nCards 2-9 are Face Value" )
+console.log( "\nJack, Queen, King are worth 10 Points each" )
+console.log( "\nAce can be either 11 or 1 depending on current score" )
+console.log( "\nType H to Hit (Get more cards) or S to Stay\n" )
+
+
 // Dealer gives out:
 // - one card face down to player
 player.giveCard( deck.playCard() )
@@ -37,6 +49,11 @@ console.log( 'Player Hand: ', player.showHand() )
 
 if( playerTotal === 21 ) {
   console.log( 'PLAYER GETS BLACKJACK!' )
+  answer = 'S'
+}
+
+if ( dealerTotal === 21 ) { //&& playerTotal !== 21
+  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
   answer = 'S'
 }
 
@@ -78,9 +95,6 @@ console.log( '\nDealer: ', dealer.showHand() )
 console.log( 'Score: ', dealerTotal )
 
 //if statements for player and dealer that do not change values
-if ( dealerTotal === 21 ) { //&& playerTotal !== 21
-  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
-}
 if ( playerTotal > 21 ) {
   console.log( '\nPLAYER WENT OVER 21\nDEALER WINS\nPLAYER NEEDS PRACTICE' )
 } else if ( dealerTotal > 21) {
@@ -88,4 +102,6 @@ if ( playerTotal > 21 ) {
 // Compare player total to dealer total, highest wins
 } else if ( dealerTotal > playerTotal ) {
   console.log( '\nLIFE IS ABOUT TAKING RISKS! YOU SHOULD HAVE HIT AGAIN!\nDEALER WINS\n')
+} else if ( playerTotal > dealerTotal ) {
+  console.log( '\nGOOD JOB! YOU SCORED HIGHER THEN DEALER!\nDEALER LOSES\n')
 }
