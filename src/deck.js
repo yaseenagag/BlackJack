@@ -15,6 +15,7 @@ class Deck {
     }
   }
 
+//Another way to createDeck
   // createDeck() {
   //   return SUITS.reduce( this.deckReducer, [] )
   // }
