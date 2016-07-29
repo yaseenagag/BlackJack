@@ -79,7 +79,7 @@ while( answer !== 'S'  ) {
   }
 }
 
-if ( answer === 'S') {
+if ( answer === 'S' && dealerTotal !== 21 ) {
   console.log( "PLAYER CHOOSES TO STAY" )
 }
 // Dealer plays, hitting while 16 or under (17 or more, dealer stays)
@@ -102,9 +102,9 @@ console.log( 'Final Score: ', dealerTotal )
 //   console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
 // }
 if ( playerTotal === 21 ) {
- console.log( '\nPLAYER GETS NATURAL BLACKJACK!\n' )
+ console.log( '\nPLAYER GETS BLACKJACK!\n' )
 } else if ( dealerTotal === 21 ) { //&& playerTotal !== 21
-  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL BLACKJACK\n' )
+  console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF BLACKJACK\n' )
 } else if ( playerTotal > 21 ) {
   console.log( '\nPLAYER WENT OVER 21\nDEALER WINS\nPLAYER NEEDS PRACTICE\n' )
 } else if ( dealerTotal > 21) {
