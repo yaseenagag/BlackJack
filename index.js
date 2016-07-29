@@ -74,7 +74,7 @@ while( answer !== 'S'  ) {
       console.log( answer + ' is not a valid response!' )
   }
 
-  if( playerTotal > 21 ) {
+  if ( playerTotal > 21 ) {
     answer = 'S'
   }
 }
