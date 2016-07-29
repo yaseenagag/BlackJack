@@ -29,6 +29,10 @@ class Card {
   value() {
     return VALUES[ this.number ] || this.number
   }
+
+  isAce() {
+    return this.number === ACE
+  }
 }
 
 module.exports.Card = Card

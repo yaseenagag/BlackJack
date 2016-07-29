@@ -6,7 +6,7 @@ class Player {
     this.cards = []
   }
 
-  getCard( card ) {
+  giveCard( card ) {
     this.cards.push( card )
   }
 
@@ -19,7 +19,17 @@ class Player {
   }
 
   handValue() {
-    return this.cards.reduce( (total, card ) => total + card.value(), 0 )
+    const sum = this.cards.reduce( (total, card ) => total + card.value(), 0 )
+
+    if( sum > 21 && this.handContainsAce() ) {
+      return sum - 10
+    } else {
+      return sum
+    }
+  }
+
+  handContainsAce() {
+    return this.cards.find( card => card.isAce() )
   }
 }
 
