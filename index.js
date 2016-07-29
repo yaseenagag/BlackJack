@@ -66,6 +66,7 @@ while( answer !== 'S'  ) {
       player.giveCard( deck.playCard() )
       playerTotal = player.handValue()
       console.log( 'Player Hand: ', player.showHand() )
+      console.log( 'Score: ', playerTotal )
     break
     case 'S':
       break
@@ -78,32 +79,33 @@ while( answer !== 'S'  ) {
   }
 }
 
+if ( answer === 'S') {
+  console.log( "PLAYER CHOOSES TO STAY" )
+}
 // Dealer plays, hitting while 16 or under (17 or more, dealer stays)
 // - If hits and bust, player wins
 while( dealerTotal <= 16 && playerTotal < 21 ) {
   dealer.giveCard( deck.playCard() )
 
   dealerTotal = dealer.handValue()
-  console.log( 'Dealer Hand: ', dealer.showHand() )
+  console.log( '\nDealer Hand: ', dealer.showHand() )
 }
 
 //Show Scores and Hands for Player and Dealer
 console.log( '\nPLayer: ', player.showHand() )
-console.log( 'Score: ', playerTotal )
+console.log( 'Final Score: ', playerTotal )
 console.log( '\nDealer: ', dealer.showHand() )
-console.log( 'Score: ', dealerTotal )
+console.log( 'Final Score: ', dealerTotal )
 
 //if statements for player and dealer that do not change values
 // if ( dealerTotal === 21 ) { //&& playerTotal !== 21
 //   console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL' )
 // }
 if ( playerTotal === 21 ) {
- console.log( 'PLAYER GETS NATURAL BLACKJACK!\n' )
-}
-if ( dealerTotal === 21 ) { //&& playerTotal !== 21
+ console.log( '\nPLAYER GETS NATURAL BLACKJACK!\n' )
+} else if ( dealerTotal === 21 ) { //&& playerTotal !== 21
   console.log( '\nYOU THE BESTEREST DEALER. DEALER WINS BECAUSE OF NATURAL BLACKJACK\n' )
-}
-if ( playerTotal > 21 ) {
+} else if ( playerTotal > 21 ) {
   console.log( '\nPLAYER WENT OVER 21\nDEALER WINS\nPLAYER NEEDS PRACTICE\n' )
 } else if ( dealerTotal > 21) {
   console.log( '\nYOU ROCK! YOU SHOULD HIT UP VEGAS\nDEALER WENT OVER 21\n' )
@@ -111,5 +113,5 @@ if ( playerTotal > 21 ) {
 } else if ( dealerTotal > playerTotal ) {
   console.log( '\nLIFE IS ABOUT TAKING RISKS! YOU SHOULD HAVE HIT AGAIN!\nDEALER WINS\n')
 } else if ( playerTotal > dealerTotal ) {
-  console.log( '\nGOOD JOB! YOU SCORED HIGHER THEN DEALER!\nDEALER LOSES\n')
+  console.log( '\nGOOD JOB! YOU SCORED HIGHER THAN DEALER!\nDEALER LOSES!\n')
 }
