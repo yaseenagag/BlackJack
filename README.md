@@ -19,6 +19,9 @@ Javascript Tutorials:
 Blackjack:
 - [x] Dealer and Player characters
 
+Tutorial:
+- [ ] Create Tutorial on How to Create Blackjack Game
+
 Dealer Logic:
 - [x] Dealer gives out cards in specific order
      - [x] Dealer gives out:
@@ -30,13 +33,13 @@ Dealer Logic:
 - [x] Dealer plays, hitting while 16 or under (17 or more, dealer stays)
   - [x] If dealer hits and busts, player wins  
 
-#Player Logic:
+Player Logic:
 - [x] if player gets Blackjack right at the start (Natural), player wins
 - [x] Repeat hit or stay until player chooses to stay:
   - [x] Player chooses to hit or stay
 - [x] if player goes over 21, player busts
 
-#Backend Game Logic:
+Backend Game Logic:
 - [x] Compare player total to dealer total, highest wins
  - [x] If player wins, players get their bet back, doubled
 
@@ -44,6 +47,9 @@ Dealer Logic:
   - [x] Player chooses to hit or stay
  - [x] If hits and bust (go over 21), automatically loses
 
+##Stretch Goals
+- [ ] Betting
+- [ ] Multiple players
 
 - [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
