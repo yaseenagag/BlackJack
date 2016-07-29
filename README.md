@@ -47,6 +47,9 @@ Backend Game Logic:
   - [x] Player chooses to hit or stay
  - [x] If hits and bust (go over 21), automatically loses
 
+ ##Added Specs:
+ - [x] User Interviews/User Testing
+
 ##Stretch Goals
 - [ ] Betting
 - [ ] Multiple players
