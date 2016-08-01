@@ -23,4 +23,10 @@ module.exports = class Hand {
   isBust(){
     return this.value() > 21
   }
+
+  returnToDealer(dealer){
+    while (this.cards.length !== 0){
+      dealer.deck.cards.push(this.cards.pop())
+    }
+  }
 }

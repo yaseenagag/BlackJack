@@ -41,6 +41,7 @@ module.exports = class Game {
       game: this,
     });
     this.players.push(this.dealer);
+    this.hands = [];
   }
 
   createHumanPlayers(){
@@ -74,6 +75,14 @@ module.exports = class Game {
     this.roundIndex++;
 
     console.log('round #'+this.roundIndex+' start!')
+
+    this.hands.forEach(hand => {
+      hand.returnToDealer(this.dealer)
+    })
+
+    if (this.dealer.deck.cards.length !== 52) {
+      throw new Error('dealer isnt playing with a full deck!')
+    }
 
     this.dealer.shuffleDeck()
 
@@ -148,6 +157,12 @@ module.exports = class Game {
     winningHands.forEach(hand => {
       console.log(colors.green(hand.player.name+' won!'))
     })
+
+
+    var playAgain = prompt.forString('Would you like to play again? (y|n)').toLowerCase();
+    if (playAgain === 'y' || startRound === 'yes'){
+      this.startRound()
+    }
 
   }
 
