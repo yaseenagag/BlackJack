@@ -27,6 +27,6 @@ module.exports = class AiDealer {
   }
 
   yourAction(hand){
-    
+    return 'stand'
   }
 }

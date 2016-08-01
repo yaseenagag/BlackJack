@@ -8,7 +8,7 @@ const QUEEN = 'Q'
 const KING = 'K'
 
 const SUITS = [ HEARTS, DIAMONDS, CLUBS, SPADES ]
-const NUMBERS = [ ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING ]
+const RANKS = [ ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING ]
 const VALUES = {
   [ACE]: 11,
   [JACK]: 10,
@@ -37,9 +37,19 @@ class Card {
   }
 }
 
+Card.all = function(){
+  var cards = []
+  SUITS.forEach(suit => {
+    RANKS.forEach(rank => {
+      cards.push(new Card(rank, suit))
+    })
+  })
+  return cards;
+}
+
 Card.SUITS    = SUITS
 
-Card.NUMBERS  = NUMBERS
+Card.RANKS    = RANKS
 Card.HEARTS   = HEARTS
 Card.DIAMONDS = DIAMONDS
 Card.CLUBS    = CLUBS

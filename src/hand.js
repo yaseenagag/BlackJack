@@ -10,13 +10,17 @@ module.exports = class Hand {
     return '['+this.cards.join(' ][')+' ]'
   }
 
-  isBust(){
+  value(){
     let aces = this.cards.filter(card => card.isAce()) 
     let sum = this.cards.reduce( (total, card) => total + card.value(), 0 )
     while (sum > 21 && aces.length > 0){
       aces.pop();
       sum -= 10;
     }
-    return sum > 21
+    return sum;
+  }
+
+  isBust(){
+    return this.value() > 21
   }
 }

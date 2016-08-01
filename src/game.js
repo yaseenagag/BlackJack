@@ -97,17 +97,58 @@ module.exports = class Game {
 
     // this.actingPlayer = this.players[0];
     this.hands.forEach(hand => {
-      hand.player.yourAction(hand)
+      while (!hand.isBust()){
+        var action = hand.player.yourAction(hand)
+        if (action === 'hit'){
+          this.dealer.dealCardToHand(hand)
+          console.log(colors.green(hand.player.name+' Hit!'))
+        }else if (action === 'stand'){
+          console.log(colors.green(hand.player.name+' Stand!'))
+          return;
+        }else{
+          console.log('UNKONWN ACTION', [action])
+        }
+      }
       if (hand.isBust()){
         console.log(colors.red(hand.player.name+' BUSTED! '+hand))
       }
     })
 
-    // steps per round
-    // everyone bets in order (min..max)
-    // dealer gives 2 cards to each player
-    // everyone takes their turn (hitting, splitting, doubling down, staying)
-    
+    // who won?
+    var dealersHand = this.hands.find(hand => hand.player === this.dealer);
+
+    console.log(colors.green('Dealer has '+dealersHand.value()))
+
+    var loosingHands = this.hands.filter(hand => {
+      return hand.isBust()
+    })
+
+    var pushingHands = this.hands.filter(hand => {
+      return (
+        hand !== dealersHand &&
+        !hand.isBust() && 
+        hand.value() === dealersHand.value() 
+      );
+    })
+
+    var winningHands = this.hands.filter(hand => {
+      return (
+        hand !== dealersHand &&
+        !hand.isBust() && 
+        hand.value() > dealersHand.value()
+      );
+    })
+
+    loosingHands.forEach(hand => {
+      console.log(colors.red(hand.player.name+' lost'))
+    })
+    pushingHands.forEach(hand => {
+      console.log(colors.yellow(hand.player.name+' pushed'))
+    })
+    winningHands.forEach(hand => {
+      console.log(colors.green(hand.player.name+' won!'))
+    })
+
   }
 
   

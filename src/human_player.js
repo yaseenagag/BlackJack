@@ -14,24 +14,18 @@ module.exports = class HumanPlayer {
   }
 
   yourAction(hand){
-    while (!hand.isBust()){
+    while(true){
       var ask = this.name+'> you have '+hand+'. What would you like to do? ([h]it,[s]tand)'
       var action = prompt.forString(ask).toLowerCase()
       
       // 'hit'
       if (action === 'h' || action === 'hit'){
-        this.game.dealer.dealCardToHand(hand)
-        continue;
+        return 'hit'
       }
       // 'stand'
       if (action === 's' || action === 'stand'){
-        return
+        return 'stand'
       }
-
-      // // 'doubleDown'
-      // // 'split'
-      // // 'insurance'
-      // // 'even money'
     }
   }
 }
