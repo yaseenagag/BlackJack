@@ -1,7 +1,7 @@
-const cards = require( './card' )
-const { Card, SUITS, NUMBERS } = cards
+const Card = require( './card' )
+const { SUITS, NUMBERS } = Card
 
-class Deck {
+module.exports = class Deck {
   constructor() {
     this.cards = [] //this.createDeck() // .concat( this.createDeck() )
     this.createDeck()
@@ -30,6 +30,10 @@ class Deck {
   shuffle() {
     var cardCount = this.cards.length
 
+    if (cardCount !== 52){
+      throw new Error('refusing to shuffle partial deck');
+    }
+
     for( let index = 0; index < cardCount; index++ ) {
       var randomIndex = Math.floor( Math.random() * cardCount )
 
@@ -47,5 +51,3 @@ class Deck {
     return this.cards.pop()
   }
 }
-
-module.exports.Deck = Deck

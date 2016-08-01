@@ -33,8 +33,12 @@ class Card {
   isAce() {
     return this.number === ACE
   }
+
+  toString(){
+    return this.number+this.suit;
+  }
 }
 
-module.exports.Card = Card
-module.exports.SUITS = SUITS
-module.exports.NUMBERS = NUMBERS
+Card.SUITS = SUITS
+Card.NUMBERS = NUMBERS
+module.exports = Card
