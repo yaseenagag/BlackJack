@@ -17,28 +17,36 @@ const VALUES = {
 }
 
 class Card {
-  constructor( options ) {
-    this.number = options.number
-    this.suit = options.suit
+  constructor(rank, suit) {
+    if (!rank) throw new Error('rank is required')
+    if (!suit) throw new Error('suit is required')
+    this.suit = suit
+    this.rank = rank
   }
 
   toString() {
-    return `${this.number} ${this.suit} `
+    return `[${this.rank}${this.suit} ]`
   }
 
   value() {
-    return VALUES[ this.number ] || this.number
+    return VALUES[ this.rank ] || this.rank
   }
 
   isAce() {
-    return this.number === ACE
-  }
-
-  toString(){
-    return this.number+this.suit;
+    return this.rank === ACE
   }
 }
 
-Card.SUITS = SUITS
-Card.NUMBERS = NUMBERS
+Card.SUITS    = SUITS
+
+Card.NUMBERS  = NUMBERS
+Card.HEARTS   = HEARTS
+Card.DIAMONDS = DIAMONDS
+Card.CLUBS    = CLUBS
+Card.SPADES   = SPADES
+
+Card.ACE      = ACE
+Card.JACK     = JACK
+Card.QUEEN    = QUEEN
+Card.KING     = KING
 module.exports = Card
