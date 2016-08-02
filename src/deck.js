@@ -1,34 +1,16 @@
-const cards = require( './card' )
-const { Card, SUITS, NUMBERS } = cards
+const Card = require( './card' )
 
-class Deck {
+module.exports = class Deck {
   constructor() {
-    this.cards = [] //this.createDeck() // .concat( this.createDeck() )
-    this.createDeck()
+    this.cards = Card.all()
   }
-
-  createDeck() {
-    for( let s = 0; s < SUITS.length; s++ ) {
-      for( let n = 0; n < NUMBERS.length; n++ ) {
-        this.cards.push( new Card({ number: NUMBERS[ n ], suit: SUITS[ s ] }) )
-      }
-    }
-  }
-
-  // createDeck() {
-  //   return SUITS.reduce( this.deckReducer, [] )
-  // }
-  //
-  // deckReducer( previous, current, index, array ) {
-  //   previous.concat( NUMBERS.reduce( ( previousCard, currentCard ) => {
-  //     previous.push( new Card({ number: currentCard, suit: current }))
-  //   }, [] ))
-  //
-  //   return previous
-  // }
 
   shuffle() {
     var cardCount = this.cards.length
+
+    if (cardCount !== 52){
+      throw new Error('refusing to shuffle partial deck');
+    }
 
     for( let index = 0; index < cardCount; index++ ) {
       var randomIndex = Math.floor( Math.random() * cardCount )
@@ -47,5 +29,3 @@ class Deck {
     return this.cards.pop()
   }
 }
-
-module.exports.Deck = Deck

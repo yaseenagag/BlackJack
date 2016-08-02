@@ -8,7 +8,7 @@ const QUEEN = 'Q'
 const KING = 'K'
 
 const SUITS = [ HEARTS, DIAMONDS, CLUBS, SPADES ]
-const NUMBERS = [ ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING ]
+const RANKS = [ ACE, 2, 3, 4, 5, 6, 7, 8, 9, 10, JACK, QUEEN, KING ]
 const VALUES = {
   [ACE]: 11,
   [JACK]: 10,
@@ -17,24 +17,46 @@ const VALUES = {
 }
 
 class Card {
-  constructor( options ) {
-    this.number = options.number
-    this.suit = options.suit
+  constructor(rank, suit) {
+    if (!rank) throw new Error('rank is required')
+    if (!suit) throw new Error('suit is required')
+    this.suit = suit
+    this.rank = rank
   }
 
   toString() {
-    return `${this.number} ${this.suit} `
+    return `[${this.rank}${this.suit} ]`
   }
 
   value() {
-    return VALUES[ this.number ] || this.number
+    return VALUES[ this.rank ] || this.rank
   }
 
   isAce() {
-    return this.number === ACE
+    return this.rank === ACE
   }
 }
 
-module.exports.Card = Card
-module.exports.SUITS = SUITS
-module.exports.NUMBERS = NUMBERS
+Card.all = function(){
+  var cards = []
+  SUITS.forEach(suit => {
+    RANKS.forEach(rank => {
+      cards.push(new Card(rank, suit))
+    })
+  })
+  return cards;
+}
+
+Card.SUITS    = SUITS
+
+Card.RANKS    = RANKS
+Card.HEARTS   = HEARTS
+Card.DIAMONDS = DIAMONDS
+Card.CLUBS    = CLUBS
+Card.SPADES   = SPADES
+
+Card.ACE      = ACE
+Card.JACK     = JACK
+Card.QUEEN    = QUEEN
+Card.KING     = KING
+module.exports = Card
